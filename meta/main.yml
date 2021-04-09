@@ -3,6 +3,7 @@ dependencies: []
 
 galaxy_info:
   role_name: certbot
+  namespace: wcm_io_devops
   author: geerlingguy
   description: "Installs and configures Certbot (for Let's Encrypt)."
   company: "Midwestern Mac, LLC"
