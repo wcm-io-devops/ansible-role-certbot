@@ -6,3 +6,24 @@
     minute: "{{ certbot_auto_renew_minute }}"
     hour: "{{ certbot_auto_renew_hour }}"
     user: "{{ certbot_auto_renew_user }}"
+
+- block:
+    - name: Remove cron job for certbot renewal.
+      cron:
+        name: Certbot automatic renewal.
+        state: absent
+    - name: Configure renewal hooks to stop services
+      copy:
+        dest: /etc/letsencrypt/renewal-hooks/pre/stop_services
+        content: |
+          #!/bin/sh
+          systemctl stop {{ certbot_create_standalone_stop_services | join(" ") }}
+        mode: ug=rx,o=
+    - name: Configure renewal hooks to start services
+      copy:
+        dest: /etc/letsencrypt/renewal-hooks/post/start_services
+        content: |
+          #!/bin/sh
+          systemctl start {{ certbot_create_standalone_stop_services | join(" ") }}
+        mode: ug=rx,o=
+  when: ansible_service_mgr == "systemd"
