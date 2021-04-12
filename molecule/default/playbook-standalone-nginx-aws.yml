@@ -125,7 +125,7 @@
       when: ansible_os_family == 'Debian'
 
   roles:
-    - geerlingguy.certbot
+    - wcm_io_devops.certbot
     - geerlingguy.nginx
 
   tasks:

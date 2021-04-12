@@ -23,4 +23,4 @@
 
   roles:
     - geerlingguy.git
-    - geerlingguy.certbot
+    - wcm_io_devops.certbot
