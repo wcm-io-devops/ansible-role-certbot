@@ -22,4 +22,6 @@
           #!/bin/sh
           systemctl start {{ certbot_create_standalone_stop_services | join(" ") }}
         mode: ug=rx,o=
-  when: ansible_service_mgr == "systemd"
+  when:
+    - ansible_service_mgr == "systemd"
+    - ansibe_os_family == "Debian"
