@@ -24,4 +24,4 @@
         mode: ug=rx,o=
   when:
     - ansible_service_mgr == "systemd"
-    - ansibe_os_family == "Debian"
+    - ansible_os_family == "Debian"
