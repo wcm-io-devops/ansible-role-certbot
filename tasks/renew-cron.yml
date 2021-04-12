@@ -8,10 +8,6 @@
     user: "{{ certbot_auto_renew_user }}"
 
 - block:
-    - name: Remove cron job for certbot renewal.
-      cron:
-        name: Certbot automatic renewal.
-        state: absent
     - name: Configure renewal hooks to stop services
       copy:
         dest: /etc/letsencrypt/renewal-hooks/pre/stop_services
