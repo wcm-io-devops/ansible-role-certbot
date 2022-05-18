@@ -36,7 +36,7 @@ Set `certbot_create_if_missing` to `yes` or `True` to let this role generate cer
 
     certbot_create_method: standalone
 
-Set the method used for generating certs with the `certbot_create_method` variable — current allowed values are: `standalone` or `webroot`.
+Set the method used for generating certs with the `certbot_create_method` variable — current allowed values are: `standalone`, `webroot` or `command`.
 
     certbot_testmode: false
 

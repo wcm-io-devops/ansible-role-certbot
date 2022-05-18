@@ -48,7 +48,7 @@ certbot_create_standalone_stop_services:
   # - apache
   # - varnish
 
-# Available options: 'package', 'snap', 'source'.
+# Available options: 'package', 'snap', 'source', 'pip'.
 certbot_install_method: 'package'
 
 # Source install configuration.
@@ -56,7 +56,11 @@ certbot_repo: https://github.com/certbot/certbot.git
 certbot_version: master
 certbot_keep_updated: true
 
-# Where to put Certbot when installing from source.
+# The packages to install when using install method pip
+certbot_pip_packages:
+  - certbot
+
+# Where to put Certbot when installing from source or pip.
 certbot_dir: /opt/certbot
 
 # Controls if classic snap support will be enabled when certbot_install_method is 'snap'

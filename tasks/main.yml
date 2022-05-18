@@ -10,6 +10,9 @@
 - import_tasks: install-with-snap.yml
   when: certbot_install_method == 'snap'
 
+- import_tasks: install-with-pip.yml
+  when: certbot_install_method == 'pip'
+
 - import_tasks: install-from-source.yml
   when: certbot_install_method == 'source'
 
@@ -26,6 +29,14 @@
   when:
     - certbot_create_if_missing
     - certbot_create_method == 'webroot'
+  loop_control:
+    loop_var: cert_item
+
+- include_tasks: create-cert-command.yml
+  with_items: "{{ certbot_certs }}"
+  when:
+    - certbot_create_if_missing
+    - certbot_create_method == 'command'
   loop_control:
     loop_var: cert_item
 
